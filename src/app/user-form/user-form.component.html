@@ -1,0 +1,96 @@
+
+<div class="con">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>
+                    Join...
+                </mat-card-title>
+                <mat-card-subtitle>
+                    or register. 
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <table [formGroup]="signInForm" *ngIf="toggleLogin">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <mat-form-field>
+                                    <input type="text" formControlName="email" matInput placeholder="email">
+                                </mat-form-field>
+                            </td>
+                            <td *ngIf="signInForm.controls.email.invalid">
+                                <ng-container *ngIf="signInForm.controls.email.errors.minlength">
+                                    Your email should have more than 6 charss
+                                </ng-container>
+                                <ng-container *ngIf="signInForm.controls.email.errors.emailError">
+                                        Email is invalid
+                                </ng-container>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <mat-form-field>
+                                    <input type="password" formControlName="password" matInput placeholder="password">
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                        <tr>
+                            
+                            <td>
+                                <button mat-raised-button (click)="login()"   color="accent">Sign in</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td (click)="showSignUp()">
+                                Create account here  
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table [formGroup]="signInForm" *ngIf="!toggleLogin">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <mat-form-field>
+                                    <input type="text" formControlName="email" matInput placeholder="email">
+                                </mat-form-field>
+                            </td>
+                            <td *ngIf="signInForm.controls.email.invalid">
+                                <ng-container *ngIf="signInForm.controls.email.errors.minlength">
+                                    Your email should have more than 6 charss
+                                </ng-container>
+                                <ng-container *ngIf="signInForm.controls.email.errors.emailError">
+                                        Email is invalid
+                                </ng-container>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <mat-form-field>
+                                    <input type="password" formControlName="password" matInput placeholder="password">
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <mat-form-field>
+                                    <input type="password" formControlName="confirmPassword" matInput placeholder="password">
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                        <tr>
+                            
+                            <td>
+                                <button mat-raised-button (click)="createAccount()"   color="accent">Sign Up</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td (click)="showSignIn()">
+                                Already a user?? Sign in here.... 
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </mat-card-content>
+        </mat-card>
+</div>
